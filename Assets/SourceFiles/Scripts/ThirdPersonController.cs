@@ -28,8 +28,9 @@ namespace StarterAssets
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
-        public AudioClip LandingAudioClip;
-        public AudioClip[] FootstepAudioClips;
+	public AudioSource JumpAudio;
+        public AudioClip LandingAudioClip, EnableAudioClip;
+        public AudioClip[] FootstepAudioClips, JumpAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
         [Space(10)]
@@ -75,7 +76,7 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
-        public Vector2  LookSensitivity = new Vector2(7.5f, 5.0f);
+        public Vector2 LookSensitivity = new Vector2(7.5f, 5.0f);
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -129,6 +130,11 @@ namespace StarterAssets
 		return false;
 #endif
             }
+        }
+        
+        private void OnEnable()
+        {
+        	AudioSource.PlayClipAtPoint(EnableAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
         }
 
 
@@ -362,6 +368,13 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
+                    
+                    if (JumpAudio != null && !JumpAudio.isPlaying)
+		    {
+		        AudioClip randomClip = JumpAudioClips[Random.Range(0, JumpAudioClips.Length)];
+		        JumpAudio.pitch = Random.Range(0.9f, 1.1f);
+			JumpAudio.PlayOneShot(randomClip, FootstepAudioVolume);
+		    }
                 }
 
                 // jump timeout

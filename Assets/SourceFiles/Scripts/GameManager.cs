@@ -72,13 +72,7 @@ public class GameManager : MonoBehaviour
             yield break;
         }
 
-        var controller = player.GetComponent<StarterAssets.ThirdPersonController>();
-        if (controller != null)
-        {
-
-            controller.TeleportAndReset(transform.position, transform.eulerAngles.y);
-        }
-        
+        player.position = checkpoint.position;
         player.gameObject.SetActive(true);
     }
 }
