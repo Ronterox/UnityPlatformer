@@ -71,8 +71,14 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(loseScene);
             yield break;
         }
-
-        player.position = checkpoint.position;
+        
         player.gameObject.SetActive(true);
+
+        var controller = player.GetComponent<StarterAssets.ThirdPersonController>();
+        if (controller != null)
+        {
+
+            controller.TeleportAndReset(transform.position, transform.eulerAngles.y);
+        }
     }
 }

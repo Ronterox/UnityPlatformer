@@ -186,6 +186,32 @@ namespace StarterAssets
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
+        
+	public void TeleportAndReset(Vector3 targetPosition, float targetYaw = 0f)
+	{
+	    // 1. Disable controller to allow transform change
+	    _controller.enabled = false;
+
+	    // 2. Reset Physics/Movement variables
+	    _verticalVelocity = 0f;
+	    _speed = 0f;
+	    _animationBlend = 0f;
+	    
+	    // 3. Reset Timeouts (prevents instant double-jumping or falling states)
+	    _jumpTimeoutDelta = JumpTimeout;
+	    _fallTimeoutDelta = FallTimeout;
+
+	    // 4. Update Position and Rotation
+	    transform.position = targetPosition;
+	    transform.rotation = Quaternion.Euler(0.0f, targetYaw, 0.0f);
+
+	    // 5. Reset Camera (using your existing logic)
+	    _cinemachineTargetYaw = targetYaw;
+	    _cinemachineTargetPitch = 0f;
+
+	    // 6. Re-enable controller
+	    _controller.enabled = true;
+	}
 
         private void GroundedCheck()
         {
