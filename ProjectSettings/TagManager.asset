@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - ParkourArea
+  - ChickenDinner
   layers:
   - Default
   - TransparentFX

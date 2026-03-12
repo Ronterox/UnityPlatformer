@@ -5,7 +5,7 @@ using System;
 public class UpdateCollectibleCount : MonoBehaviour
 {
     private TextMeshProUGUI collectibleText;
-    private GameObject parkourArea;
+    private GameObject parkourArea, chickenDinner;
     
     [Header("Audio Settings")]
     public AudioSource audioSource; // Drag your AudioSource here in the Inspector
@@ -23,6 +23,9 @@ public class UpdateCollectibleCount : MonoBehaviour
         }
 
         parkourArea = GameObject.FindGameObjectWithTag("ParkourArea");
+        chickenDinner = GameObject.FindGameObjectWithTag("ChickenDinner");
+        
+        if (chickenDinner != null) chickenDinner.SetActive(false);
         
         // Try to get AudioSource if not assigned
         if (audioSource == null)
@@ -60,6 +63,7 @@ public class UpdateCollectibleCount : MonoBehaviour
             collectibleText.text = "WIIINNNERRR!!!";
             
             if (parkourArea != null) parkourArea.SetActive(false);
+            if (chickenDinner != null) chickenDinner.SetActive(true);
 
             // Play the cheering sound once
             if (!hasPlayedWinSound && audioSource != null && winSound != null)
