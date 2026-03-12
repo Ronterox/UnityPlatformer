@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine;
 
@@ -16,11 +17,19 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public string loseScene;
+    
     [Header("Effects")]
     public GameObject particleEffectPrefab;
+    
+    [Header("Player")]
     public Transform player, checkpoint;
        
     public int maxLives = 3;
+    public int Lives
+    {
+      get { return lives; }
+    }
     
     private int lives;
 
@@ -29,18 +38,15 @@ public class GameManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-    
-    private void Start() 
-    {
-    	lives = maxLives;
-    	Debug.Log("Lives " + lives);
+        
+        lives = maxLives;
+        Debug.Log("Lives " + lives);
     }
     
     public void LoseLife() 
@@ -60,6 +66,11 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(delay);
+        
+        if (lives <= 0) {
+            SceneManager.LoadScene(loseScene);
+            yield break;
+        }
 
         player.position = checkpoint.position;
         player.gameObject.SetActive(true);

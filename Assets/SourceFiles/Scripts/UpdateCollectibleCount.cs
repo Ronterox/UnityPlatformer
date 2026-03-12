@@ -11,6 +11,7 @@ public class UpdateCollectibleCount : MonoBehaviour
     public AudioSource audioSource; // Drag your AudioSource here in the Inspector
     public AudioClip winSound;      // Drag cheering.mp3 here
     private bool hasPlayedWinSound = false; // Prevents the sound from looping/restarting
+    private int maxCollectibles = 0;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class UpdateCollectibleCount : MonoBehaviour
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
 
+	maxCollectibles = GetTotalCollectibles();
         UpdateCollectibleDisplay();
     }
 
@@ -34,10 +36,9 @@ public class UpdateCollectibleCount : MonoBehaviour
     {
         UpdateCollectibleDisplay();
     }
-
-    private void UpdateCollectibleDisplay()
-    {
-        int totalCollectibles = 0;
+    
+    int GetTotalCollectibles() {
+    	int totalCollectibles = 0;
 
         // Count Pickup objects
         Type collectibleType = Type.GetType("Pickup");
@@ -45,13 +46,13 @@ public class UpdateCollectibleCount : MonoBehaviour
         {
             totalCollectibles += UnityEngine.Object.FindObjectsByType(collectibleType, FindObjectsSortMode.None).Length;
         }
+        
+        return totalCollectibles;
+    }
 
-        // Count Collectible2D objects
-        Type collectible2DType = Type.GetType("Collectible2D");
-        if (collectible2DType != null)
-        {
-            totalCollectibles += UnityEngine.Object.FindObjectsByType(collectible2DType, FindObjectsSortMode.None).Length;
-        }
+    private void UpdateCollectibleDisplay()
+    {
+        int totalCollectibles = GetTotalCollectibles();
 
         // Logic for Winning
         if (totalCollectibles <= 0)
@@ -69,7 +70,7 @@ public class UpdateCollectibleCount : MonoBehaviour
         }
         else
         {
-            collectibleText.text = $"Collectibles remaining: {totalCollectibles}";
+            collectibleText.text = $"{maxCollectibles - totalCollectibles}/{maxCollectibles}";
         }
     }
 }
