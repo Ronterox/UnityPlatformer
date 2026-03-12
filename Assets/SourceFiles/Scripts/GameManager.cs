@@ -71,8 +71,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(loseScene);
             yield break;
         }
-        
-        player.gameObject.SetActive(true);
 
         var controller = player.GetComponent<StarterAssets.ThirdPersonController>();
         if (controller != null)
@@ -80,5 +78,7 @@ public class GameManager : MonoBehaviour
 
             controller.TeleportAndReset(transform.position, transform.eulerAngles.y);
         }
+        
+        player.gameObject.SetActive(true);
     }
 }
