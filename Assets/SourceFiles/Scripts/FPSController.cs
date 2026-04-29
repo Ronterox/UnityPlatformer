@@ -51,7 +51,7 @@ namespace StarterAssets
             float mouseSensitivity = LookSensitivity;
 
             _cameraYaw += _input.look.x * mouseSensitivity * Time.deltaTime;
-            _cameraPitch -= _input.look.y * mouseSensitivity * Time.deltaTime;
+            _cameraPitch += _input.look.y * mouseSensitivity * Time.deltaTime;
 
             _cameraPitch = ClampAngle(_cameraPitch, BottomClamp, TopClamp);
 
