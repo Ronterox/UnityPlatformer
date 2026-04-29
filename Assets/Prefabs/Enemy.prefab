@@ -120,13 +120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfa8716af9593866b34e8488f9f70ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 20
-  attackRange: 8
+  chaseRange: 30
+  attackRange: 15
   shootCooldown: 2
   bulletPrefab: {fileID: 186928150811326333, guid: b3b2b678c3355f0509ab06526d0ff256, type: 3}
   firePoint: {fileID: 8492651380000000002}
   agent: {fileID: 6812900008296392967}
   bulletArcOffset: 0.15
+  ShootSound: {fileID: 8300000, guid: 922ff3730fb9173caa4249199487f1c3, type: 3}
 --- !u!114 &7814500008296392968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  DeathSound: {fileID: 8300000, guid: be7a082abed85d854a03233c930a7209, type: 3}
 --- !u!1 &8492651380000000001
 GameObject:
   m_ObjectHideFlags: 0

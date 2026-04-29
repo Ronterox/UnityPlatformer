@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147667903359656097}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.34599996}
+  m_LocalRotation: {x: -0.052828036, y: -0.053129416, z: -0.0028146447, w: 0.99718535}
+  m_LocalPosition: {x: 0.010566235, y: 0.98943424, z: 0.24712266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67,7 +67,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 500
-  field of view: 90
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -672,6 +672,7 @@ MonoBehaviour:
   LaserColor: {r: 1, g: 0, b: 0, a: 1}
   LaserWidth: 0.05
   Input: {fileID: 4611225914212240007}
+  ShootSound: {fileID: 8300000, guid: 1b9e0fdc1c99166ff9238ead5366778e, type: 3}
 --- !u!1001 &6509270828373736757
 PrefabInstance:
   m_ObjectHideFlags: 0
