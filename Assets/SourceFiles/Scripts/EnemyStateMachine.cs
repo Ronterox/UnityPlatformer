@@ -16,6 +16,10 @@ public class EnemyStateMachine : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public NavMeshAgent agent;
+    
+    [Header("Projectile Settings")]
+    [Tooltip("Upward offset to reduce bullet drop (0 = no offset, 0.2 = noticeable lift)")]
+    public float bulletArcOffset = 0.15f;
 
     private State _currentState = State.Idle;
     private float _shootTimer;
@@ -98,6 +102,9 @@ public class EnemyStateMachine : MonoBehaviour
         if (bulletPrefab == null || firePoint == null) return;
 
         Vector3 direction = (Player.position - firePoint.position).normalized;
+        direction.y += bulletArcOffset;
+        direction.Normalize();
+        
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(direction));
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();

@@ -19,7 +19,8 @@ namespace StarterAssets
 
         private float _cameraPitch;
         private float _cameraYaw;
-        private float _lastFireTime;
+        private float _fireCooldownTimer;
+        private bool _hasFiredThisPress;
 
         private static RaycastHit _hit;
 
@@ -60,12 +61,11 @@ namespace StarterAssets
 
         private void HandleFiring()
         {
-            if (_input == null) return;
-
-            if (_input.fire && Time.time >= _lastFireTime + FireRate)
+            if (_fireCooldownTimer <= 0f)
             {
                 FireRaycast();
-                _lastFireTime = Time.time;
+                _fireCooldownTimer = FireRate;
+                Debug.Log("[FPSController] >>> FIRE! <<<");
             }
         }
 

@@ -134,7 +134,10 @@ namespace StarterAssets
         
         private void OnEnable()
         {
-        	AudioSource.PlayClipAtPoint(EnableAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+        	if (_controller != null && EnableAudioClip != null)
+        	{
+        		AudioSource.PlayClipAtPoint(EnableAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+        	}
         }
 
 
