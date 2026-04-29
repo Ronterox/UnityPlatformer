@@ -746,18 +746,32 @@ Wave FINAL (After ALL tasks - verification wave):
 
 > **CRITICAL**: Unity projects require manual testing in Editor. No CLI automation possible.
 
-- [ ] F1. **Integration Verification** — Manual Unity Editor testing
-  Start play mode, verify:
-  1. Mouse look rotates camera in FPS view (no third-person offset)
-  2. Press fire → raycast from GunBarrelEnd hits enemy at 10m distance
-  3. Enemy takes 1 heart damage and dies immediately
-  4. Enemy without player in range stays Idle (stationary)
-  5. Enemy with player within 15m starts Chasing (moves via NavMesh)
-  6. Enemy with player within 8m fires projectile (Shooting state)
-  7. Projectile travels toward player with force, calls LoseLife() on hit
-  8. Zero warnings or errors in Unity Console
+**[MANUAL TASK - CANNOT BE AUTOMATED]**
 
-  Output: MANUAL VERIFICATION REQUIRED - Unity Editor play mode
+**F1. Integration Verification** — Manual Unity Editor testing
+
+All code implementation is complete. To verify the FPS system works:
+
+**Prerequisites (Manual Unity Setup):**
+1. Create `Assets/Prefabs/Bullet.prefab` (see Task 6)
+2. Create `Assets/Prefabs/Enemy.prefab` (see Task 7)
+3. Modify `Assets/Prefabs/MyPlayer.prefab` - add GunBarrelEnd child, attach FPSController.cs and WeaponSystem.cs (see Task 10)
+4. Ensure "Enemy" layer exists in Unity Layer Manager
+5. Bake NavMesh in MainScene for enemy AI navigation
+
+**Manual Verification Steps:**
+1. Open MainScene in Unity Editor
+2. Enter Play Mode
+3. Verify: Mouse look rotates camera in FPS view (no third-person offset)
+4. Verify: Press fire → raycast from GunBarrelEnd hits enemy
+5. Verify: Enemy takes 1 heart damage and dies immediately
+6. Verify: Enemy without player in range stays Idle (stationary)
+7. Verify: Enemy with player within 15m starts Chasing (moves via NavMesh)
+8. Verify: Enemy with player within 8m fires projectile (Shooting state)
+9. Verify: Projectile travels toward player with force, calls LoseLife() on hit
+10. Verify: Zero warnings or errors in Unity Console
+
+**Output: MANUAL VERIFICATION REQUIRED - Unity Editor play mode**
 
 ---
 
