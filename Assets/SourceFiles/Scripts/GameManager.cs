@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
     	
     	Debug.Log("Lives " + lives);
     }
+
+    public void TakeDamage(int amount = 1)
+    {
+        LoseLife();
+    }
     
     IEnumerator RespawnPlayer(float delay)
     {

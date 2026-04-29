@@ -1,0 +1,32 @@
+{
+  "active_plan": "/home/rontero/Documents/Projects/UnityProjects/UnityPlatformer/.sisyphus/plans/fps-conversion.md",
+  "started_at": "2026-04-29T18:35:48.372Z",
+  "session_ids": [
+    "ses_22579634bffeR8YWUw9RVtsHKF"
+  ],
+  "session_origins": {
+    "ses_22579634bffeR8YWUw9RVtsHKF": "direct"
+  },
+  "plan_name": "fps-conversion",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "**FPSController.cs** — FPS camera rotation controller",
+      "session_id": "ses_225789b4effeIMgJPiWR5Wo2bO",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-29T18:40:39.810Z"
+    },
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "**Bullet.prefab** — Enemy projectile prefab with Rigidbody",
+      "session_id": "ses_22573fea8ffegnbg2Y8FFhyAn7",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-29T18:42:11.402Z"
+    }
+  }
+}
