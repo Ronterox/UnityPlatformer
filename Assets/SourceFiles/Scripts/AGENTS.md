@@ -8,7 +8,7 @@ Core game logic scripts. 11 C# MonoBehaviours controlling player, enemies, colle
 ## FILES
 | File | Lines | Purpose |
 |------|-------|---------|
-| ThirdPersonController.cs | 471 | Player movement, parkour, climbing, gravity, camera |
+| ThirdPersonController.cs | 472 | Player movement, parkour, climbing, gravity, camera |
 | GameManager.cs | 78 | Singleton - lives, respawn, scene transitions |
 | StarterAssetsInputs.cs | 95 | Input wrapper (InputSystem) |
 | Hearts.cs | ~50 | Lives/heart UI display |
