@@ -21,6 +21,10 @@ public class EnemyStateMachine : MonoBehaviour
     [Tooltip("Upward offset to reduce bullet drop (0 = no offset, 0.2 = noticeable lift)")]
     public float bulletArcOffset = 0.15f;
 
+    [Header("Audio")]
+    public AudioClip ShootSound;
+    private AudioSource _audioSource;
+
     private State _currentState = State.Idle;
     private float _shootTimer;
 
@@ -33,6 +37,12 @@ public class EnemyStateMachine : MonoBehaviour
             agent = GetComponent<NavMeshAgent>();
         }
         _shootTimer = 0f;
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void Update()
@@ -111,6 +121,11 @@ public class EnemyStateMachine : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = direction * 20f;
+        }
+
+        if (ShootSound != null)
+        {
+            _audioSource.PlayOneShot(ShootSound);
         }
     }
 }

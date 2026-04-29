@@ -22,6 +22,10 @@ public class WeaponSystem : MonoBehaviour
     [Header("Input Reference")]
     public StarterAssetsInputs Input;
 
+    [Header("Audio")]
+    public AudioClip ShootSound;
+    private AudioSource _audioSource;
+
     private float _fireCooldownTimer;
     private Camera _mainCamera;
     private float _laserTimer;
@@ -53,6 +57,12 @@ public class WeaponSystem : MonoBehaviour
             LaserLine.endColor = Color.yellow;
             LaserLine.useWorldSpace = true;
             LaserLine.enabled = false;
+        }
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
@@ -104,6 +114,11 @@ private void Update()
 
         _laserEndPoint = rayEnd;
         _laserTimer = LaserDuration;
+
+        if (ShootSound != null)
+        {
+            _audioSource.PlayOneShot(ShootSound);
+        }
     }
 
     private void OnDrawGizmos()
